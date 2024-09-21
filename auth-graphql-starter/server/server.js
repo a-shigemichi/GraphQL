@@ -1,12 +1,12 @@
 const express = require('express');
-const models = require('./models/index.js');
+const models = require('./models');
 const expressGraphQL = require('express-graphql');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const passport = require('passport');
-const passportConfig = require('./services/auth.js');
+const passportConfig = require('./services/auth');
 const MongoStore = require('connect-mongo')(session);
-const schema = require('./schema/schema.js');
+const schema = require('./schema/schema');
 
 // Create a new Express application
 const app = express();
@@ -14,9 +14,6 @@ const app = express();
 // Replace with your Mongo Atlas URI
 const MONGO_URI =
   "mongodb+srv://shigemichi45:m5bsZr1R5CPeNcso@cluster0.mqjyc.mongodb.net/lyrical?retryWrites=true&w=majority&appName=Cluster0";
-if (!MONGO_URI) {
-  throw new Error('You must provide a Mongo Atlas URI');
-}
 
 // Mongoose's built in promise library is deprecated, replace it with ES2015 Promise
 mongoose.Promise = global.Promise;
